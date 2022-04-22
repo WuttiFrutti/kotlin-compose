@@ -29,10 +29,10 @@ import persistence.interfaces.IPersistence
 fun app() = withDI({
     import(jxInjectorModule)
 
-    bind<INetwork>() with factory { jx.newInstance<NetworkComponent>() }
-    bind<IPersistence>() with factory { jx.newInstance<PersistenceComponent>() }
-    bind<IMessenger>() with factory { jx.newInstance<MessengerComponent>() }
-    bind<IGameEvents>() with factory { jx.newInstance<EventHandlerComponent>() }
+    bind<INetwork>() with singleton { jx.newInstance<NetworkComponent>() }
+    bind<IPersistence>() with singleton { jx.newInstance<PersistenceComponent>() }
+    bind<IMessenger>() with singleton { jx.newInstance<MessengerComponent>() }
+    bind<IGameEvents>() with singleton { jx.newInstance<EventHandlerComponent>() }
 
     bindProvider<MakeMaterialTheme> {  MakeMaterialTheme() };
 }) {
