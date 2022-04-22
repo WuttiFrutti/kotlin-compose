@@ -1,32 +1,44 @@
-import androidx.compose.material.MaterialTheme
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import models.Brand
+import eventhandler.EventHandlerComponent
+import eventhandler.interfaces.IGameEvents
+import messenger.MessengerComponent
+import messenger.interfaces.IMessenger
 import org.kodein.di.compose.localDI
 import org.kodein.di.compose.withDI
 import org.kodein.di.jxinject.jx
-import models.Car
+import network.NetworkComponent
+import network.interfaces.INetwork
 import org.kodein.di.*
-import org.kodein.di.compose.factory
 import org.kodein.di.jxinject.jxInjectorModule
-import org.kodein.di.jxinject.jxQualifier
+import persistence.PersistenceComponent
+import persistence.interfaces.IPersistence
 
 @Composable
 @Preview
 fun app() = withDI({
     import(jxInjectorModule)
-    bind<Brand>() with factory { Brand() }
+
+    bind<INetwork>() with factory { jx.newInstance<NetworkComponent>() }
+    bind<IPersistence>() with factory { jx.newInstance<PersistenceComponent>() }
+    bind<IMessenger>() with factory { jx.newInstance<MessengerComponent>() }
+    bind<IGameEvents>() with factory { jx.newInstance<EventHandlerComponent>() }
+
     bindProvider<MakeMaterialTheme> {  MakeMaterialTheme() };
 }) {
     val makeMaterialTheme: MakeMaterialTheme by localDI().instance();
+    val eventHandler: IGameEvents by localDI().instance();
+    println(eventHandler.gameEventStream)
 
     return@withDI makeMaterialTheme();
 }
@@ -35,16 +47,29 @@ fun app() = withDI({
 class MakeMaterialTheme() {
     @Composable
     operator fun invoke() {
-        val car =  localDI().jx.newInstance<Car>();
-        var text by remember { mutableStateOf(car.brand.name) }
+        var text by remember { mutableStateOf("yeet") }
 
         MaterialTheme {
-            Button(
-                onClick = {
-                text = "Hello, Desktop!"
-            }) {
-                Text(text)
+            Scaffold(
+                topBar = {
+                    TopAppBar { /* Top app bar content */ }
+                },
+                drawerContent = {
+                    Text("Drawer title", modifier = Modifier.padding(16.dp))
+                    Divider()
+                    // Drawer items
+                }
+            ) {
+                Button(
+                    onClick = {
+                        text = "Hello, Desktop!"
+                    }) {
+                    Text(text)
+                }
             }
+
+
+
         }
     };
 }

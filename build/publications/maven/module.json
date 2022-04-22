@@ -1,0 +1,103 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.gradle.sample",
+    "module": "library",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "library-1.1.jar",
+          "url": "library-1.1.jar",
+          "size": 33080,
+          "sha512": "90dcff89e6c94f9785eea352667c19cac74fc100aadb33bde975a55ebf67450633cd9c911e7237361afa841e1f0dff736ec0f5e8dce5c11329c4b6dc8fc4970e",
+          "sha256": "68c7eeb8bdd3858da2ee922e0b0c3fa8a8bf00ad8426eb6ffd43bdfd575af672",
+          "sha1": "db53b193621cf5f7fdfb0f3e4055a4bf51776be0",
+          "md5": "b0f5770e049473dcf3165cf11e11d6aa"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.compose.desktop",
+          "module": "desktop-jvm-windows-x64",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "org.kodein.di",
+          "module": "kodein-di-framework-compose",
+          "version": {
+            "requires": "7.11.0"
+          }
+        },
+        {
+          "group": "org.kodein.di",
+          "module": "kodein-di-jxinject-jvm",
+          "version": {
+            "requires": "7.11.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "library-1.1.jar",
+          "url": "library-1.1.jar",
+          "size": 33080,
+          "sha512": "90dcff89e6c94f9785eea352667c19cac74fc100aadb33bde975a55ebf67450633cd9c911e7237361afa841e1f0dff736ec0f5e8dce5c11329c4b6dc8fc4970e",
+          "sha256": "68c7eeb8bdd3858da2ee922e0b0c3fa8a8bf00ad8426eb6ffd43bdfd575af672",
+          "sha1": "db53b193621cf5f7fdfb0f3e4055a4bf51776be0",
+          "md5": "b0f5770e049473dcf3165cf11e11d6aa"
+        }
+      ]
+    }
+  ]
+}

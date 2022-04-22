@@ -21,6 +21,8 @@ dependencies {
     implementation(compose.desktop.currentOs)
     implementation("org.kodein.di:kodein-di-framework-compose:7.11.0")
     implementation("org.kodein.di:kodein-di-jxinject-jvm:7.11.0")
+    implementation("io.reactivex.rxjava3:rxjava:3.1.4")
+    implementation("io.netty:netty-all:4.1.75.Final")
 }
 
 tasks.withType<KotlinCompile> {
